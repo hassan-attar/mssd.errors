@@ -1,8 +1,8 @@
-import {InternalServerError as _InternalServerError} from "./internal-server-error"
+import { InternalServerError as _InternalServerError } from "./internal-server-error";
 
 /**
  * @namespace ServerErrors
- * 
+ *
  * This namespace contains concrete error classes related to server-side errors.
  */
 export namespace ServerErrors {
@@ -13,4 +13,4 @@ export namespace ServerErrors {
     export const InternalServerError = _InternalServerError;
 }
 
-export * from "./internal-server-error"
+export * from "./internal-server-error";

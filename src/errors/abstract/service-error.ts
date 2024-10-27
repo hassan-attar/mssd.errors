@@ -11,7 +11,7 @@ interface BaseServiceError {
     /** A message explaining what went wrong, suitable for showing to end users. */
     message: string;
 
-    /** 
+    /**
      * The path to the part of the request that caused the error.
      * @example ["body", "user", "email"]
      */
@@ -23,12 +23,12 @@ interface BaseServiceError {
 
 /**
  * Abstract class that serves as the base class for all service-related errors.
- * 
+ *
  * This class extends the built-in JavaScript `Error` class and provides a common
  * structure for handling custom error serialization and logging. All custom service
  * errors should extend this class and implement the `serializeErrors` method to
  * standardize the error format.
- * 
+ *
  * @abstract
  * @extends Error
  */
@@ -36,7 +36,7 @@ abstract class ServiceError extends Error {
     /**
      * The HTTP status code or error code representing the type of error.
      * Must be implemented by subclasses.
-     * 
+     *
      * @type {number}
      * @abstract
      */
@@ -45,7 +45,7 @@ abstract class ServiceError extends Error {
     /**
      * Method to serialize the error information into an array of `BaseServiceError` objects.
      * Each custom error class must implement this method to ensure consistent error structure.
-     * 
+     *
      * @abstract
      * @returns {BaseServiceError[]} - Array of serialized error objects.
      */
@@ -53,7 +53,7 @@ abstract class ServiceError extends Error {
 
     /**
      * Converts the error object into a standardized JSON structure.
-     * 
+     *
      * @returns {Object} - An object containing a key `errors` with the serialized errors.
      */
     toJSON() {
@@ -64,7 +64,7 @@ abstract class ServiceError extends Error {
 
     /**
      * Constructor for the `ServiceError` class.
-     * 
+     *
      * @param {string} logMessage - The internal message used for logging or debugging purposes.
      */
     constructor(logMessage: string) {
