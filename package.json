@@ -1,6 +1,6 @@
 {
   "name": "@mssd/errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Hassan Attar <h.a.develops@gmail.com>",
   "description": "A standardized error handling package for microservices. @mssd/errors provides middleware, error types, and utilities to manage and handle errors consistently across services in a microservices architecture.",
   "main": "./dist/index.js",
@@ -17,7 +17,13 @@
     "build": "pnpm run clean && tsc",
     "doc": "./node_modules/.bin/typedoc"
   },
-  "keywords": ["errors", "microservices", "express-errors", "error-middleware", "error-handlers"],
+  "keywords": [
+    "errors",
+    "microservices",
+    "express-errors",
+    "error-middleware",
+    "error-handlers"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hassan-attar/mssd.errors/issues"
