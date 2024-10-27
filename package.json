@@ -1,20 +1,28 @@
 {
   "name": "@mssd/errors",
   "version": "1.0.0",
+  "author": "Hassan Attar <h.a.develops@gmail.com>",
   "description": "A standardized error handling package for microservices. @mssd/errors provides middleware, error types, and utilities to manage and handle errors consistently across services in a microservices architecture.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hassan-attar/mssd.errors"
+  },
   "scripts": {
     "clean": "rm -rf ./dist/*",
     "build": "pnpm run clean && tsc",
-    "doc": "./node_modules/.bin/jsdoc -c ./jsdoc.json"
+    "doc": "./node_modules/.bin/typedoc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["errors", "microservices", "express-errors", "error-middleware", "error-handlers"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hassan-attar/mssd.errors/issues"
+  },
+  "homepage": "https://hassan-attar.github.io/mssd.errors/",
   "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
   "devDependencies": {
     "@microsoft/tsdoc": "^0.15.0",

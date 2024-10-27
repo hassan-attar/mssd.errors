@@ -1,6 +1,7 @@
 {
-    "entryPoints": ["src/index.ts"], // Adjust this path to your main TypeScript entry file
-    "out": "docs",                   // Output directory for the documentation
+    "entryPoints": ["src/index.ts"],  // Adjust this path to your main TypeScript entry file
+    "readme": "./README.md",
+    "out": "docs",                    // Output directory for the documentation
     "tsconfig": "./tsconfig.json",    // Path to your TypeScript configuration
     "includeVersion": true,           // Adds version number to the documentation
     "theme": "default"                // Choose your preferred theme
