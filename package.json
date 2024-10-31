@@ -1,6 +1,6 @@
 {
     "name": "@mssd/errors",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "author": "Hassan Attar <h.a.develops@gmail.com>",
     "description": "A standardized error handling package for microservices. @mssd/errors provides middleware, error types, and utilities to manage and handle errors consistently across services in a microservices architecture.",
     "main": "./dist/index.js",
