@@ -1,6 +1,7 @@
 import { NotFoundError as _NotFoundError } from "./not-found-error";
 import { UnauthorizedError as _UnauthorizedError } from "./unauthorized-error";
-import { ValidationError as _ValidationError } from "./validation-error";
+import { RequestDataValidationError as _RequestDataValidationError } from "./request-data-validation-error";
+import { UnprocessableEntityError as _UnprocessableEntityError } from "./unprocessable-entity-error";
 
 /**
  * @namespace ClientErrors
@@ -21,13 +22,20 @@ export namespace ClientErrors {
      */
     export const UnauthorizedError = _UnauthorizedError;
     /**
-     * Represents a validation error that occurs when the input data does not conform
-     * to a specified schema. (400 Bad Request error)
-     * @see {@link _ValidationError}
+     * Represents a Bad-Request error that occurs when the input data does not conform
+     * to a specified schema or type. (400 Bad Request error)
+     * @see {@link _RequestDataValidationError}
      */
-    export const ValidationError = _ValidationError;
+    export const RequestDataValidationError = _RequestDataValidationError;
+    /**
+     * Represents an Unprocessable Entity error that occurs when the server understands
+     * the request and input types but cannot process it due to semantic issues with the input data.
+     * @see {@link _UnprocessableEntityError}
+     */
+    export const UnprocessableEntityError = _UnprocessableEntityError;
 }
 
 export * from "./not-found-error";
 export * from "./unauthorized-error";
-export * from "./validation-error";
+export * from "./request-data-validation-error";
+export * from "./unprocessable-entity-error";

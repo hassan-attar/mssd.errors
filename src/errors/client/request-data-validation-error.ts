@@ -2,7 +2,7 @@ import { ClientError } from "../abstract";
 import { BaseServiceError } from "../abstract/service-error";
 
 /**
- * Interface representing the structure of a validation error.
+ * Interface representing the structure of a request validation error.
  * This interface defines the standard format for validation errors that occur during input validation processes.
  *
  * Developers can use `ZodIssue` types directly in place of this
@@ -10,7 +10,7 @@ import { BaseServiceError } from "../abstract/service-error";
  * compatible shape. This allows for flexibility in handling
  * validation errors, whether using Zod or custom validation logic.
  */
-interface BaseValidationError {
+interface BaseRequestDataValidationError {
     /**
      * A user-friendly error message that describes the validation issue.
      * This message should be clear and informative, allowing users
@@ -36,16 +36,16 @@ interface BaseValidationError {
 }
 
 /**
- * Represents a validation error that occurs when the input data does not conform
+ * Represents a request data validation error that occurs when the input data does not conform
  * to a specified schema.
  *
  * This class extends the `ClientError` class and is used to handle HTTP
  * 400 Bad Request errors resulting from invalid input.
  *
- * @class ValidationError
+ * @class RequestDataValidationError
  * @extends {ClientError}
  */
-class ValidationError extends ClientError {
+class RequestDataValidationError extends ClientError {
     /**
      * The HTTP status code representing a validation error.
      * @type {number}
@@ -53,11 +53,11 @@ class ValidationError extends ClientError {
     code = 400;
 
     /**
-     * An array of validation error objects conforming to the `BaseValidationError` interface.
+     * An array of validation error objects conforming to the `BaseRequestDataValidationError` interface.
      * @private
-     * @type {BaseValidationError[]}
+     * @type {BaseRequestDataValidationError[]}
      */
-    private errors: BaseValidationError[];
+    private errors: BaseRequestDataValidationError[];
 
     /**
      * The context of the validation error, indicating where the validation failed.
@@ -68,19 +68,19 @@ class ValidationError extends ClientError {
     private context: "body" | "query" | "path" | "header" | "cookie";
 
     /**
-     * Creates an instance of `ValidationError`.
+     * Creates an instance of `RequestDataValidationError`.
      *
-     * @param {BaseValidationError[]} errors - An array of validation error objects.
+     * @param {BaseRequestDataValidationError[]} errors - An array of validation error objects.
      * @param {"body" | "query" | "path" | "header" | "cookie"} context - The context where the validation failed.
      */
     constructor(
-        errors: BaseValidationError[],
+        errors: BaseRequestDataValidationError[],
         context: "body" | "query" | "path" | "header" | "cookie"
     ) {
-        super(ValidationError.name);
+        super(RequestDataValidationError.name);
         this.errors = errors;
         this.context = context;
-        Object.setPrototypeOf(this, ValidationError.prototype);
+        Object.setPrototypeOf(this, RequestDataValidationError.prototype);
     }
 
     /**
@@ -92,7 +92,7 @@ class ValidationError extends ClientError {
      *
      * @returns {BaseServiceError[]} An array of serialized error details for each validation error, which includes:
      * - `code`: 400 (Bad Request)
-     * - `type`: "ValidationError" (the name of the error class)
+     * - `type`: "RequestDataValidationError" (the name of the error class)
      * - `message`: A user-friendly message indicating the validation issue.
      * - `path`: An array showing the specific path of the invalid input.
      * - `details`: An array containing additional information about the error.
@@ -100,7 +100,7 @@ class ValidationError extends ClientError {
     serializeErrors(): BaseServiceError[] {
         return this.errors.map((err) => ({
             code: this.code,
-            type: ValidationError.name,
+            type: RequestDataValidationError.name,
             message: err.message,
             path: [this.context, ...err.path],
             details: [err]
@@ -108,4 +108,4 @@ class ValidationError extends ClientError {
     }
 }
 
-export { ValidationError };
+export { RequestDataValidationError };
