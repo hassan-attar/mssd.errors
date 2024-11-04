@@ -2,6 +2,7 @@ import { NotFoundError as _NotFoundError } from "./not-found-error";
 import { UnauthorizedError as _UnauthorizedError } from "./unauthorized-error";
 import { RequestDataValidationError as _RequestDataValidationError } from "./request-data-validation-error";
 import { UnprocessableEntityError as _UnprocessableEntityError } from "./unprocessable-entity-error";
+import { ForbiddenError as _ForbiddenError } from "./forbidden-error";
 
 /**
  * @namespace ClientErrors
@@ -33,9 +34,17 @@ export namespace ClientErrors {
      * @see {@link _UnprocessableEntityError}
      */
     export const UnprocessableEntityError = _UnprocessableEntityError;
+
+    /**
+     * Represents a forbidden error, which is used to indicate that
+     * the server understands the request but refuses to authorize it.
+     * @see {@link _ForbiddenError}
+     */
+    export const ForbiddenError = _ForbiddenError;
 }
 
 export * from "./not-found-error";
 export * from "./unauthorized-error";
 export * from "./request-data-validation-error";
 export * from "./unprocessable-entity-error";
+export * from "./forbidden-error";

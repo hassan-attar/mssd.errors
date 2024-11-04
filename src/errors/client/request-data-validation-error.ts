@@ -65,17 +65,17 @@ class RequestDataValidationError extends ClientError {
      * @private
      * @type {"body" | "query" | "path" | "header" | "cookie"}
      */
-    private context: "body" | "query" | "path" | "header" | "cookie";
+    private context: "body" | "query" | "path" | "header" | "cookie" | undefined;
 
     /**
      * Creates an instance of `RequestDataValidationError`.
      *
      * @param {BaseRequestDataValidationError[]} errors - An array of validation error objects.
-     * @param {"body" | "query" | "path" | "header" | "cookie"} context - The context where the validation failed.
+     * @param {"body" | "query" | "path" | "header" | "cookie" | undefined} context - The context where the validation failed. (useful for development and frontend bug fixes)
      */
     constructor(
         errors: BaseRequestDataValidationError[],
-        context: "body" | "query" | "path" | "header" | "cookie"
+        context?: "body" | "query" | "path" | "header" | "cookie" | undefined
     ) {
         super(RequestDataValidationError.name);
         this.errors = errors;
@@ -102,8 +102,8 @@ class RequestDataValidationError extends ClientError {
             code: this.code,
             type: RequestDataValidationError.name,
             message: err.message,
-            path: [this.context, ...err.path],
-            details: [err]
+            path: err.path,
+            details: [{ ...err, context: this.context }]
         }));
     }
 }

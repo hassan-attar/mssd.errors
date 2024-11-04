@@ -13,7 +13,7 @@ interface BaseServiceError {
 
     /**
      * The path to the part of the request that caused the error.
-     * @example ["body", "user", "email"]
+     * @example ["user", "email"]
      */
     path?: (string | number)[];
 
